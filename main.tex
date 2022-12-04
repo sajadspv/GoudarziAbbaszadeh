@@ -4,51 +4,217 @@
 % Replace `english' with e.g. `spanish' to change the document language
 \usepackage[english]{babel}
 \usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\hypersetup{pdfborder=0 0 0}
 
 % Set page size and margins
 % Replace `letterpaper' with `a4paper' for UK/EU standard size
-\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
 % Useful packages
 \usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
-\title{RASD}
-\author{Mohammad Amin Abbaszadeh, Sajjad}
+\title{Requirements Analysis and Specification Document\\(RASD)}
+\author{Mohammad Amin Abbaszadeh 
+Sajjad}
+
+\date{\vspace{-5ex}}
+
 
 \begin{document}
 \maketitle
 \doublespacing
-\hypersetup{linkcolor=black}
 
 \tableofcontents
 \newpage
 \section{Introduction}
-there is sth here
-
 
 \subsection{Purpose}
 
+Nowadays, with a great pace in the usage of fossil fuels by the transportation system, significant negative environmental consequences are rising. A well-know solution to overcome this problem is Electric mobility (e-Mobility). Exploiting  e-Mobility leads to several challenges that can be handled through softwares. When using and electric automobile, it is substantial to have a feasible plan for charging the car in way that pose the least limitation on users consumption. Whit the help of a software system called e-Mobility Service Providers (eMSPs) drivers can proceed with managing their car charging. The eMSPs cooperate with  Charging Point Operators (CPOs) through the so-called Charge Point Management System (CPMS). The CPMS provide electricity to the connected vehicle by obtaining it from an exteranl Distribution System Operators (DSOs). The whole process of tranfering electricity from the source where it is produced to the battery inside an automobile is handled and managed by CPMS and eMSPs. 
+The whole process of requirement engineering of these systems are elaborated in this document.
 
 \subsubsection{Goals}
+\vspace{0.2cm}
 
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X
+  | }
+
+
+\hline
+\textbf {Goals} & \textbf{ Description} \\ 
+ \hline
+G1  &   User should access to all near charging stations as well as the cost and special offers of the stations \\
+\hline
+G2  &   User should be able to reserve a charge in a selected station in a an possible time frame\\
+\hline
+G3 &   User should be able to start the charging process at a specific station \\
+\hline
+G4 & User should be notified via an application when the charging is finished \\
+\hline
+G5 & User should be able to pay for the charging service online through the application \\
+\hline
+G6 & CPOs should be able to spot the location of charging stations and know about their number of charging sockets
+available, their type such as slow/fast/rapid, their cost, and, if all sockets of a certain type are occupied, the estimated amount of time until the first socket of that type is freed \\
+\hline
+G7 & CPOs should be able to start charging a vehicle according to the amount of power supplied by the socket, and monitor the charging process to infer when the battery is full\\
+\hline
+
+G8 & CPOs should be able to know the “internal” status of a charging station \\
+\hline
+
+G9 & CPOs should be able to retrieve information about the current price of energy from DSOs\\
+\hline
+
+G10 & CPOs should be able to decide from which DSO to acquire energy\\
+\hline
+
+G11 & CPOs should be able to dynamically decide where to get energy for charging (station battery, DSO, or a mix thereof according to availability and cost)\\
+
+\hline
+\end{tabularx}
 
 \subsection{Scope}
+Such a system could be developed in a remarkably smart way such that recommend the user a charging plan by accessing to the user calendar, battery status, navigation system, and etc. However, in this document the scope of the project that is elaborated based on the goals mentioned above as well as the fact that an eMSP can interact with multiple CPMSs, each one owned by a different CPO. The interaction approach between eMSP and CPMSs (synchronous, asynchronous, a mixture between the two).
 
 \subsubsection{World Phenomena}
-
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X
+  | }
+\hline
+\textbf {World Phenomena} & \textbf{Description} \\ 
+\hline
+WP1 & Driver needs to refill the battery of the car whenever it is required \\ 
+\hline
+WP2 & A driver can spot a charging station nearby (less than 100km) according to the distribution of charging stations geographically \\
+\hline
+WP3 & The price of electricity fluctuate frequently\\
+\hline
+WP4 & Electricity is generated in some factories and distributes by DSOs \\
+\hline
+\end{tabularx}
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
+%%%%%%%%
 \subsubsection{Shared Phenomena}
+\begin{itemize}
+    \item \textbf{controlled by the world and observed by the machine}
+\end{itemize}
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X
+  | }
+\hline
+
+\textbf {Shared Phenomena } & \textbf{Description} \\
+\hline
+SP1 & A user sign up in application of log in if already existed\\
+\hline
+SP2 & A user can book a charging \\
+\hline
+SP3 & A user can start the process of charging at a certain station\\
+\hline
+SP4 & A user pays the amount of charging by the application\\
+\hline
+SP5 & A CPO manage energy through application manually\\
+\hline
+
+
+\end{tabularx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+    \item \textbf{controlled by the machine and observed by the world}
+\end{itemize}
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X
+  | }
+\hline
+
+\textbf {Shared Phenomena } & \textbf{Description} \\
+\hline
+SP & The system shows to the user the nearby stations plus the cost and special offers of the station\\
+\hline
+SP & The system notifies the user when the charging process is finished\\
+\hline
+
+
+
+\end{tabularx}
+
 
 \subsection{Definitions,Acronyms,Abbreviations}
 
 \subsubsection{Definitions}
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X
+  | }
+\hline
 
+CPO & CPO are companies that manage the charging stations.\\
+\hline
+
+CPMS & CPMS is an IT infrastructure ( A software system) that enables the CPOs to manage the charging stations either manually or automatically by the CPMS itself \\
+\hline
+
+eMSP & eMSP is a sotware system that enables drivers to manage charging their vehicles \\
+\hline
+
+Driver & Driver is a user of the system who interacts with the eMSP system to manage charging a vehicle \\
+\hline
+
+
+
+
+
+
+\end{tabularx}
 \subsubsection{Abbreviations}
 
+\vspace{0.2cm}
+
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X
+  | }
+ \hline
+\textbf {Goals} & \textbf{ Description} \\ 
+\hline
+ RASD  &   Requirements Analysis and Specification Document \\
+\hline
+CPO & Charging Point Operator \\
+\hline
+CPMS & Charge Point Management System \\
+\hline
+eMSP & e-Mobility Service Provider \\
+\hline
+DSO & Distribution System Operator \\
+\hline
+WPx & World phenomena number x \\
+\hline
+SPx & Shared phenomena number x\\
+\hline
+
+
+\end{tabularx}
+
+ 
 \subsection{Revision History}
 
 \subsection{Reference Documents}
+
+\begin{itemize}
+    \large
+    \item \href{https://webeep.polimi.it/pluginfile.php/515844/mod_folder/content/0/ProjectToBeReviewed/RASD.pdf}{DREAM\_RASD.pdf}\\
+    \item \href{https://webeep.polimi.it/pluginfile.php/515844/mod_folder/content/0/Assignment%20RDD%20AY%202022-2023_v3.pdf?forcedownload=1}{Document of The Project}
+\end{itemize}
 
 \subsection{Document Structure}
 
